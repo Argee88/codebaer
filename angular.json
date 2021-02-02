@@ -37,6 +37,94 @@
           }
         }
       }
+    },
+    "responsive-element-demo": {
+      "projectType": "application",
+      "root": "apps/responsive-element-demo",
+      "sourceRoot": "apps/responsive-element-demo/src",
+      "prefix": "codebaer",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/responsive-element-demo",
+            "index": "apps/responsive-element-demo/src/index.html",
+            "main": "apps/responsive-element-demo/src/main.ts",
+            "polyfills": "apps/responsive-element-demo/src/polyfills.ts",
+            "tsConfig": "apps/responsive-element-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/responsive-element-demo/src/favicon.ico",
+              "apps/responsive-element-demo/src/assets"
+            ],
+            "styles": ["apps/responsive-element-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/responsive-element-demo/src/environments/environment.ts",
+                  "with": "apps/responsive-element-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "responsive-element-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "responsive-element-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "responsive-element-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/responsive-element-demo/src/**/*.ts",
+              "apps/responsive-element-demo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/responsive-element-demo"],
+          "options": {
+            "jestConfig": "apps/responsive-element-demo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -58,7 +146,8 @@
     "@nrwl/angular:application": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none"
     },
     "@nrwl/angular:library": {
       "style": "scss",
