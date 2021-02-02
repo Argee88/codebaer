@@ -8,6 +8,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
+    "build:responsive-element": "ng build ngx-responsive-element --prod",
     "test": "ng test",
     "test:responsive-element": "ng test ngx-responsive-element",
     "lint": "nx workspace-lint && ng lint",
