@@ -3,7 +3,7 @@
 ## Install
 
 ```
-npm i ngx-responsive-element
+npm i -S @codebaer/ngx-responsive-element
 ```
 
 ## Include
@@ -11,14 +11,14 @@ npm i ngx-responsive-element
 Import the module via
 
 ```
-import { NgxResponsiveElementsModule } from 'ngx-responsive-element';
+import { NgxResponsiveElementModule } from '@codebaer/ngx-responsive-element';
 ```
 
-and add NgxResponsiveElementsModule to your module's imports
+and add NgxResponsiveElementModule to your module's imports
 
 ```javascript
 @NgModule({
-    imports: [..., NgxResponsiveElementsModule],
+    imports: [..., NgxResponsiveElementModule],
 })
 export class YourModule {}
 ```
@@ -39,7 +39,7 @@ const sizeMap = { 300: 'small', 500: 'medium', 700: 'large' };
 ```
 
 ```html
-<div ngxReResponsiveElement [sizeMap]="sizeMap"></div>
+<div cbNgxResponsiveElement [sizeMap]="sizeMap"></div>
 ```
 
 From 300px element's width to 499px the class 'small' will be applied. From
@@ -62,5 +62,5 @@ const defaultCssClass = 'test';
 ```
 
 ```html
-<div ngxReResponsiveElement [defaultCssClass]="defaultCssClass"></div>
+<div cbNgxResponsiveElement [defaultCssClass]="defaultCssClass"></div>
 ```
