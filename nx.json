@@ -15,5 +15,8 @@
       "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": { "ngx-responsive-element": { "tags": [] } }
+  "projects": {
+    "ngx-responsive-element": { "tags": [] },
+    "responsive-element-demo": { "tags": [] }
+  }
 }

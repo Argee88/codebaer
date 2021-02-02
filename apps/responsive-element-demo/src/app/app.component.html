@@ -1,0 +1,39 @@
+<div>
+  <h4>defaultCssClass</h4>
+  <pre>
+    {{ defaultCssClass }}
+  </pre>
+  <h4>sizeMap</h4>
+  <pre>
+    {{ sizeMap | json }}
+  </pre>
+  <h4>colorMap</h4>
+  <ul>
+    <li class="default"></li>
+    <li class="test"></li>
+    <li class="small"></li>
+    <li class="medium"></li>
+    <li class="large"></li>
+  </ul>
+</div>
+
+<div cbNgxResponsiveElement>
+  <h1>Directive only</h1>
+  class:
+</div>
+<div cbNgxResponsiveElement [sizeMap]="sizeMap">
+  <h1>Directive with sizeMap</h1>
+  class:
+</div>
+<div cbNgxResponsiveElement [defaultCssClass]="defaultCssClass">
+  <h1>Directive with defaultCssClass</h1>
+  class:
+</div>
+<div
+  cbNgxResponsiveElement
+  [defaultCssClass]="defaultCssClass"
+  [sizeMap]="sizeMap"
+>
+  <h1>Directive with sizeMap and defaultCssClass</h1>
+  class:
+</div>
