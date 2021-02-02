@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "projects": {},
+  "cli": {
+    "defaultCollection": "@nrwl/workspace",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    }
+  }
+}
