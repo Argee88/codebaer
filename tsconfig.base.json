@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@codebaer/ngx-responsive-element": [
+        "libs/ngx-responsive-element/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

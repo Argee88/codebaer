@@ -1,8 +1,46 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "ngx-responsive-element": {
+      "projectType": "library",
+      "root": "libs/ngx-responsive-element",
+      "sourceRoot": "libs/ngx-responsive-element/src",
+      "prefix": "cb",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ngx-responsive-element/tsconfig.lib.json",
+            "project": "libs/ngx-responsive-element/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ngx-responsive-element/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ngx-responsive-element/src/**/*.ts",
+              "libs/ngx-responsive-element/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ngx-responsive-element"],
+          "options": {
+            "jestConfig": "libs/ngx-responsive-element/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace",
+    "defaultCollection": "@nrwl/angular",
     "analytics": false
   },
   "schematics": {
@@ -16,6 +54,21 @@
       "storybook-configuration": {
         "linter": "eslint"
       }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "strict": true
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
-  }
+  },
+  "defaultProject": "ngx-responsive-element"
 }
