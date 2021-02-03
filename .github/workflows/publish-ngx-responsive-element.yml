@@ -29,3 +29,4 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./dist/libs/ngx-responsive-element/package.json
+          access: public

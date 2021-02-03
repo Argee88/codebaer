@@ -1,6 +1,27 @@
 {
   "name": "@codebaer/ngx-responsive-element",
-  "version": "0.0.1",
+  "version": "11.0.0",
+  "description": "Directive that adds responsive functionality to any element. Adds custom css classes for provided element widths to facilitate styling elements for different screen sizes.",
+  "author": {
+    "name": "René Galle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Argee88/codebaer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Argee88/codebaer/issues"
+  },
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "directive",
+    "responsive",
+    "elements",
+    "element"
+  ],
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^11.0.9",
     "@angular/core": "^11.0.9"
