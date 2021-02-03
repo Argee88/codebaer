@@ -25,11 +25,7 @@ jobs:
           check-latest: true
       - run: npm ci
       - run: npm run build:responsive-element
-      - id: publish
-        uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           package: ./dist/libs/ngx-responsive-element/package.json
-      - if: steps.publish.outputs.type != 'none'
-        run: |
-        echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
