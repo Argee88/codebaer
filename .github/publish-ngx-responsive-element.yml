@@ -1,0 +1,35 @@
+name: Publish ngx-responsive-element
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-setup:
+    name: Setup build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Setup node 14 and install modules
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          check-latest: true
+      - run: npm ci
+      - run: npm run build:responsive-element
+      - id: publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./dist/libs/ngx-responsive-element/package.json
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+        echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
