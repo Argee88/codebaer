@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 
 import { AfterViewInit, Directive, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroupDirective } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroupDirective, ValidationErrors } from '@angular/forms';
 
 import { Util } from '../classes/util.class';
 import { ErrorDetails } from '../models/error-details';
@@ -20,11 +20,11 @@ export class FormErrorsDirective
 
   private isReady = false;
 
-  get errors() {
+  get errors(): ValidationErrors | null {
     return this.isReady && this.control ? this.control.errors : null;
   }
 
-  get hasErrors() {
+  get hasErrors(): boolean {
     return !!this.errors;
   }
 
@@ -39,20 +39,18 @@ export class FormErrorsDirective
     });
   }
 
-  private checkStatus() {
+  private checkStatus(): void {
     if (this.control) {
       const control = this.control;
       const errors = this.control.errors;
 
       this.isReady = true;
 
-      if (!errors) {
-        return;
+      if (errors) {
+        Object.keys(errors).forEach((errorName) =>
+          this.subject$.next({ control, errorName })
+        );
       }
-
-      Object.keys(errors).forEach((errorName) =>
-        this.subject$.next({ control, errorName })
-      );
     }
   }
 
@@ -68,7 +66,7 @@ export class FormErrorsDirective
     this.subject$ = new BehaviorSubject<ErrorDetails | null>(null);
   }
 
-  getError(name: string) {
+  getError(name: string): Record<string, unknown> | null {
     return this.isReady && this.control ? this.control.getError(name) : null;
   }
 

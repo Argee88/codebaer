@@ -13,14 +13,16 @@ import { FormErrorsDirective } from './form-errors.directive';
   selector: '[cbFormError]',
 })
 export class FormErrorDirective implements DoCheck, OnDestroy, OnInit {
+  /**
+   * The error(s) this element will display an error message for
+   */
   @Input()
-  set setFormError(value: ErrorOptions) {
+  set cbFormError(value: ErrorOptions) {
     this.errorNames = Util.errorOptionsToArray(value);
   }
 
   /**
-   * The displayFormErrorWhen causes the element to be displayed
-   * when the formControl's property given here evalutates to true
+   * The displayFormErrorWhen causes the element to be displayed when the formControl's property given here evalutates to true
    */
   @Input()
   set displayFormErrorWhen(value: ErrorOptions) {
@@ -31,7 +33,7 @@ export class FormErrorDirective implements DoCheck, OnDestroy, OnInit {
 
   private errorNames: string[] = [];
   private rules: string[] = [];
-  private readonly _states$ = new Subject<string[]>();
+  private _states$ = new Subject<string[]>();
   private readonly onDestroy$ = new Subject();
   private states$!: Observable<string[]>;
 
@@ -48,10 +50,12 @@ export class FormErrorDirective implements DoCheck, OnDestroy, OnInit {
       )
     );
   }
+
   ngOnDestroy(): void {
     this.onDestroy$.next();
     this._states$.complete();
   }
+
   ngOnInit(): void {
     this.states$ = this._states$.asObservable().pipe(distinctUntilChanged());
 
