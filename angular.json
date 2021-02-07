@@ -125,6 +125,131 @@
           }
         }
       }
+    },
+    "ngx-form-errors": {
+      "projectType": "library",
+      "root": "libs/ngx-form-errors",
+      "sourceRoot": "libs/ngx-form-errors/src",
+      "prefix": "cb",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ngx-form-errors/tsconfig.lib.json",
+            "project": "libs/ngx-form-errors/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ngx-form-errors/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ngx-form-errors/src/**/*.ts",
+              "libs/ngx-form-errors/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ngx-form-errors"],
+          "options": {
+            "jestConfig": "libs/ngx-form-errors/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "form-errors-demo": {
+      "projectType": "application",
+      "root": "apps/form-errors-demo",
+      "sourceRoot": "apps/form-errors-demo/src",
+      "prefix": "codebaer",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/form-errors-demo",
+            "index": "apps/form-errors-demo/src/index.html",
+            "main": "apps/form-errors-demo/src/main.ts",
+            "polyfills": "apps/form-errors-demo/src/polyfills.ts",
+            "tsConfig": "apps/form-errors-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/form-errors-demo/src/favicon.ico",
+              "apps/form-errors-demo/src/assets"
+            ],
+            "styles": ["apps/form-errors-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/form-errors-demo/src/environments/environment.ts",
+                  "with": "apps/form-errors-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "form-errors-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "form-errors-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "form-errors-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/form-errors-demo/src/**/*.ts",
+              "apps/form-errors-demo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/form-errors-demo"],
+          "options": {
+            "jestConfig": "apps/form-errors-demo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

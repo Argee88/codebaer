@@ -17,6 +17,8 @@
   },
   "projects": {
     "ngx-responsive-element": { "tags": [] },
-    "responsive-element-demo": { "tags": [] }
+    "responsive-element-demo": { "tags": [] },
+    "ngx-form-errors": { "tags": ["reactive form error"] },
+    "form-errors-demo": { "tags": [] }
   }
 }
