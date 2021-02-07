@@ -18,6 +18,7 @@
     "fe": "ng serve form-errors-demo",
     "build": "ng build",
     "build:responsive-element": "ng build ngx-responsive-element --prod",
+    "build:form-errors": "ng build ngx-form-errors --prod",
     "test": "ng test",
     "test:responsive-element": "ng test ngx-responsive-element",
     "lint": "nx workspace-lint && ng lint",
