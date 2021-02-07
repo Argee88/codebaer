@@ -1,0 +1,15 @@
+.content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+
+  & > * {
+    margin-bottom: 15px;
+  }
+}

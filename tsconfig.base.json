@@ -17,7 +17,8 @@
     "paths": {
       "@codebaer/ngx-responsive-element": [
         "libs/ngx-responsive-element/src/index.ts"
-      ]
+      ],
+      "@codebaer/ngx-form-errors": ["libs/ngx-form-errors/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,29 @@
+<div class="content">
+  <form [formGroup]="form" class="loginForm" (ngSubmit)="login(form.value)">
+    <mat-form-field cbFormErrors="email">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required />
+      <mat-error cbFormError="required" displayFormErrorWhen="touched">
+        Required
+      </mat-error>
+      <mat-error cbFormError="email" displayFormErrorWhen="touched">
+        Bad email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field cbFormErrors="password">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required />
+      <mat-error cbFormError="required" displayFormErrorWhen="touched">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Login
+    </button>
+  </form>
+</div>
